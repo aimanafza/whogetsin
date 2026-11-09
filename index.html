@@ -1,0 +1,400 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Who Gets In?</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Libre+Caslon+Text:wght@400;700&family=Pinyon+Script&display=swap">
+<style>
+/* Layout: a printed invitation. Spread-word caps lines like a broadside, one lace medallion as the seal, single cream column below. Single light look by design. */
+:root{
+  color-scheme:light;
+  --paper:#ECE6DA; --card:#F3EEE4; --ink:#2C2A27; --muted:#6B655C; --rule:#CDC3B1;
+  --red:#9B1D1B; --red-deep:#6F1413; --red-soft:#EAD4CD; --cream-on-red:#F1E6DA;
+  --thread:#9B1D1B; --olive:#6F1413; --olive-soft:#E0D7C6; --thread-soft:#EAD4CD;
+  --hex-empty:#E2D9C9; --hex-1:#D9A79E; --hex-2:#BA554B; --hex-3:#9B1D1B;
+  --caps:"Libre Caslon Text", "Times New Roman", Georgia, serif;
+  --serif:"Cormorant Garamond", Garamond, Georgia, serif;
+  --script:"Pinyon Script", "Snell Roundhand", cursive;
+  --mono:"Libre Caslon Text", "Times New Roman", serif;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:500 19px/1.55 var(--serif);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .25 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 72px}
+.wrap{max-width:980px;margin:0 auto}
+.col{max-width:660px}
+h1,h2,h3{text-wrap:balance;margin:0;font-weight:500}
+p{margin:0}
+a{color:var(--red)}
+:focus-visible{outline:1.5px solid var(--red);outline-offset:3px}
+.label{font:700 11px/1.3 var(--caps);letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.spread{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 14px;font:700 12px/1.25 var(--caps);letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+.spread.ink{color:var(--ink)}
+.spread.lab{max-width:none}
+.script{font:400 34px/1 var(--script);color:var(--red);text-transform:none;letter-spacing:0}
+section{padding-block:60px 8px;display:grid;gap:22px}
+h2{font:500 clamp(30px,4.6vw,44px)/1.12 var(--serif);color:var(--ink)}
+h2 em{font:400 1.18em/1 var(--script);color:var(--red);font-style:normal;padding-inline:.06em}
+.rule2{border:0;height:4px;margin:0;border-top:1px solid var(--red);border-bottom:1px solid var(--red);opacity:.7}
+
+/* Hero */
+header{padding-block:44px 8px;display:grid;gap:30px}
+.hero{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;justify-items:center}
+.hero .side{font:700 11px var(--caps);letter-spacing:.08em;color:var(--red);text-transform:uppercase}
+.hero .side.l{justify-self:end}.hero .side.r{justify-self:start}
+@media (max-width:560px){.hero{grid-template-columns:1fr}.hero .side{display:none}.poster .spread{font-size:11px}}
+.medal{width:min(420px,78vw);display:grid;gap:10px;justify-items:center}
+.medal svg{width:100%;height:auto;display:block;filter:drop-shadow(0 1px 1px rgba(60,20,15,.18))}
+.poster{display:grid;gap:5px;max-width:820px;margin-inline:auto;width:100%}
+.poster .gap{height:14px}
+.dek{font:italic 400 clamp(20px,2.4vw,24px)/1.45 var(--serif);max-width:620px;margin-inline:auto;text-align:center;color:var(--ink)}
+
+/* Record */
+.legend{display:flex;flex-wrap:wrap;gap:16px;font:400 15px var(--serif);color:var(--muted);align-items:center}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.record{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.field{background:var(--card);border:1px solid var(--rule);outline:1px solid var(--rule);outline-offset:-5px;min-width:0}
+.field summary{list-style:none;cursor:pointer;padding:16px 18px;display:grid;gap:6px}
+.field summary::-webkit-details-marker{display:none}
+.field .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.field h3{font:700 12.5px/1.35 var(--caps);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.keep{font:700 10px/1 var(--caps);letter-spacing:.1em;text-transform:uppercase;padding:5px 7px;white-space:nowrap}
+.keep.raw{border:1px solid var(--ink);color:var(--ink)}
+.keep.prot{background:var(--red);color:var(--cream-on-red)}
+.keep.temp{border:1px dashed var(--red);color:var(--red)}
+.sample{font:italic 400 17px/1.4 var(--serif);color:var(--muted);overflow-wrap:anywhere}
+.more{font:400 22px/1 var(--script);color:var(--red)}
+.field[open] .more{display:none}
+.body{padding:12px 18px 18px;display:grid;gap:10px;border-top:1px solid var(--rule)}
+.body dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:17px;line-height:1.45}
+.body dt{font:700 10px/2.2 var(--caps);letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.body dd{margin:0}
+.body .q{border-left:2px solid var(--red);padding-left:12px;font-style:italic;font-size:18px}
+
+/* Matrix */
+.scroll{overflow-x:auto;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+table{border-collapse:collapse;width:100%;min-width:520px;font:500 17px/1.3 var(--serif)}
+th,td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:center}
+th:first-child,td:first-child{text-align:left}
+thead th{font:700 10.5px/1.3 var(--caps);letter-spacing:.1em;text-transform:uppercase;color:var(--red);vertical-align:bottom}
+td{vertical-align:middle}
+td .y,td .p,td .n,.dots .y,.dots .p,.dots .n{display:inline-block;width:14px;height:14px;border-radius:50%;font-size:0;vertical-align:middle}
+td .y,.dots .y{background:var(--red)}
+td .p,.dots .p{border:1.5px solid var(--red);background:linear-gradient(90deg,var(--red) 50%,transparent 50%)}
+td .n,.dots .n{border:1.5px solid var(--muted);opacity:.55;width:10px;height:10px}
+
+/* Lifecycle */
+.life{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));border-top:1px solid var(--ink)}
+.step{padding:16px 14px 4px 0;display:grid;gap:4px;align-content:start;position:relative}
+.step::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink);position:absolute;top:-5px;left:0}
+.step.cut::before{background:var(--red);border-color:var(--red)}
+.step .when{font:700 10.5px/1.3 var(--caps);letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-top:6px}
+.step h3{font:600 21px/1.2 var(--serif)}
+.step p{font-size:16px;line-height:1.4;color:var(--muted)}
+
+/* Map */
+.mapgrid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:30px;align-items:start}
+@media (max-width:780px){.mapgrid{grid-template-columns:1fr}}
+.mapbox{min-width:0;padding:14px;border:1px solid var(--rule);outline:1px solid var(--rule);outline-offset:-5px;background:var(--card)}
+.mapbox svg{display:block;width:100%;height:auto}
+.mapnote{display:grid;gap:14px;min-width:0;font-size:18px}
+.mapnote b{font:700 11px var(--caps);letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-right:4px}
+.pending{border:1px dashed var(--red);padding:12px 14px;font:italic 400 17px/1.45 var(--serif)}
+.scale{display:flex;gap:4px;align-items:center;font:400 15px var(--serif);color:var(--muted);flex-wrap:wrap}
+.scale i{display:inline-block;width:22px;height:12px}
+
+/* Redesign */
+.swap{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.swap > div{padding:18px 18px 18px 0;display:grid;gap:10px;align-content:start;min-width:0}
+.swap > div + div{padding-left:22px;border-left:1px solid var(--rule)}
+@media (max-width:640px){.swap{grid-template-columns:1fr}.swap > div + div{border-left:0;border-top:1px solid var(--rule);padding-left:0}}
+.swap ul{margin:0;padding-left:18px;display:grid;gap:9px;font-size:18px;line-height:1.42}
+.swap li::marker{color:var(--red)}
+
+.bio{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--ink);border-left:1px solid var(--rule)}
+.bio > div{padding:16px 18px 18px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:grid;gap:6px;align-content:start;min-width:0}
+.bio p{font-size:18px;line-height:1.45}
+@media (max-width:600px){.bio{grid-template-columns:1fr}}
+.refs{font-size:17px;line-height:1.5;display:grid;gap:10px;padding:0;margin:0}
+.refs li{padding-left:22px;text-indent:-22px;list-style:none;overflow-wrap:anywhere}
+.closing{margin-top:56px;display:grid;justify-items:center;gap:8px}
+.vine{width:min(260px,70vw);position:relative}
+.vine svg{width:100%;height:auto;display:block}
+.vine .in{position:absolute;inset:0;display:grid;place-content:center;text-align:center;gap:6px}
+.vine .in .script{font-size:38px}
+@media (prefers-reduced-motion:no-preference){.field{transition:border-color .15s}.field:hover{border-color:var(--red)}}
+</style>
+
+<div class="wrap">
+<header>
+  <p class="spread"><span>Saturday</span><span>Club.</span><span>Karachi</span><span>2026.</span></p>
+  <div class="hero">
+    <span class="side l">Apply</span>
+    <div class="medal">
+      <span class="label">A data biography</span>
+      <svg id="medal" viewBox="0 0 400 300" role="img" aria-label="Red lace medallion reading Who gets in?"></svg>
+      <span class="label">DH Tutorial 26F</span>
+    </div>
+    <span class="side r">Approved</span>
+  </div>
+  <div class="poster" aria-label="Research question: How does a Karachi social club's 2026 sign-up system define a safe guest, and who does that data design include or leave out?">
+    <p class="spread" aria-hidden="true"><span>How</span><span>does</span><span>a</span><span>Karachi</span><span>social</span><span>club's</span></p>
+    <p class="spread" aria-hidden="true"><span>2026</span><span>sign-up</span><span>system</span><span>define</span><span>a</span><span>safe</span><span>guest,</span></p>
+    <p class="spread" aria-hidden="true"><span>and</span><span>who</span><span>does</span><span>that</span><span>data</span><span>design</span></p>
+    <p class="spread" aria-hidden="true"><span>include</span><span>or</span><span>leave</span><span>out?</span></p>
+    <div class="gap"></div>
+    <p class="spread ink"><span>Unit:</span><span>one record.</span><span>Time:</span><span>Sept–Nov 2026.</span></p>
+    <p class="spread ink"><span>Space:</span><span>Karachi, by area.</span><span>Frame:</span><span>Data Feminism, capta.</span></p>
+  </div>
+  <p class="dek">Saturday Club is a small, vetted gathering somewhere in Karachi every Saturday. To get in, you hand over your national ID. This page reads the sign-up form as a source: what it asks, who sees it, how long it lives, and who it quietly leaves at the door.</p>
+  <p class="label" style="text-align:center">Aiman Afzal Arain · Portfolio Assignment 1</p>
+</header>
+<section aria-labelledby="s-bio">
+  <hr class="rule2">
+  <p class="spread lab"><span>No. 00</span><span>The biography.</span><span>Saturday Club</span></p>
+  <div class="col" style="display:grid;gap:12px">
+    <h2 id="s-bio">A background check on the <em>data</em></h2>
+    <p>Heather Krause argues that a dataset needs a background check before you trust it, the same way a journalist checks a human source. She asks four questions. Here they are, turned on the club's own records.</p>
+  </div>
+  <div class="bio">
+    <div><span class="script">Where</span><p>A Supabase database behind socialisewithmarzya.com. One row per person, one per booking, with photos in private storage.</p></div>
+    <div><span class="script">Who</span><p>The host collects it, through a platform I designed and built. The collector is also the judge, and I am inside this data, not outside it.</p></div>
+    <div><span class="script">How</span><p>Three kinds of source share one row: what the applicant types, what her documents and camera show, and what the host decides by hand.</p></div>
+    <div><span class="script">Why</span><p>Krause calls this the most important question. The stated reason is safety: every stranger checked. But the same record also runs payments, strikes and bans long after the safety check is done.</p></div>
+  </div>
+  <p class="col" style="font-style:italic;color:var(--muted)">Krause's own example showed apparent trends that were really changes in how data was collected. The map below carries the same risk: it records where the host chose venues, not where Karachi wanted to gather.</p>
+</section>
+<section aria-labelledby="s-record">
+  <hr class="rule2">
+  <div class="col" style="display:grid;gap:12px">
+    <p class="spread lab"><span>No. 01</span><span>THE RECORD.</span><span>Saturday Club</span></p>
+    <h2 id="s-record">Fourteen fields make a <em>guest</em></h2>
+    <p>Each card is one field the live system stores. The sample values belong to a made-up applicant, "Sana Q.", so no real guest appears here. Open a card to see why the field exists, who reads it, and what it assumes.</p>
+  </div>
+  <div class="legend"><span><span class="keep raw">Readable</span> stored as is</span><span><span class="keep prot">Protected</span> hashed or encrypted</span><span><span class="keep temp">Temporary</span> deleted on a timer</span></div>
+  <div class="record" id="record"></div>
+</section><section aria-labelledby="s-matrix">
+  <hr class="rule2">
+  <div class="col" style="display:grid;gap:12px">
+    <p class="spread lab"><span>No. 02</span><span>WHO SEES WHAT.</span><span>Saturday Club</span></p>
+    <h2 id="s-matrix">Power sits in <em>one</em> column</h2>
+    <p>D'Ignazio and Klein ask us to examine power: who collects, who decides, who is collected. Reading down the columns, the host sees every field in full. The applicant cannot view her own uploaded photos, cannot read her own feedback after sending it, and never learns the host keeps private notes on her. The door is the host's own account, not separate staff.</p>
+  </div>
+  <div class="scroll"><table id="matrix"></table></div>
+  <div class="legend dots"><span><span class="y"></span> sees it in full</span><span><span class="p"></span> sees part or a derived form</span><span><span class="n"></span> never sees it</span></div>
+</section><section aria-labelledby="s-life">
+  <hr class="rule2">
+  <div class="col" style="display:grid;gap:12px">
+    <p class="spread lab"><span>No. 03</span><span>LIFESPAN OF A RECORD.</span><span>Saturday Club</span></p>
+    <h2 id="s-life">The ID photo lives <em>30 days</em>, unless nobody decides</h2>
+    <p>A record is not one object. It changes shape as the guest moves through the system. Red dots mark where something is deliberately destroyed. The last dot is where the system forgets to.</p>
+  </div>
+  <div class="life">
+    <div class="step"><span class="when">Day 0</span><h3>Apply</h3><p>Name, CNIC and both photos, date of birth, WhatsApp, occupation, live selfie.</p></div>
+    <div class="step"><span class="when">Host's pace</span><h3>Host decides</h3><p>Offer a seat, waitlist, or reject. A reason is optional.</p></div>
+    <div class="step"><span class="when">On approval</span><h3>Address shared</h3><p>By email and WhatsApp, even to people who never pay. Never public.</p></div>
+    <div class="step"><span class="when">48h, or 12h late</span><h3>Pay</h3><p>Easypaisa only, screenshot plus transaction ID. Unpaid seats pass to the waitlist.</p></div>
+    <div class="step"><span class="when">Saturday</span><h3>Door check</h3><p>QR ticket, then the host compares the face to the selfie. Absent 2h after the end means a no-show.</p></div>
+    <div class="step"><span class="when">Next day</span><h3>Rating</h3><p>One link, valid 7 days: 1 to 5 stars and 50 words. Only the host can read it.</p></div>
+    <div class="step cut"><span class="when">Decision + 30 days</span><h3>ID purge</h3><p>CNIC photos, student or work ID and the readable CNIC are deleted.</p></div>
+    <div class="step cut"><span class="when">12 months</span><h3>Selfie and payments</h3><p>Selfie after the last visit; payment screenshots after upload.</p></div>
+    <div class="step cut"><span class="when">Never</span><h3>What stays</h3><p>The CNIC hash, the audit log, and every file of an applicant nobody ever decided on.</p></div>
+  </div>
+</section><section aria-labelledby="s-map">
+  <hr class="rule2">
+  <div class="col" style="display:grid;gap:12px">
+    <p class="spread lab"><span>No. 04</span><span>WHERE THE CLUB HAPPENS.</span><span>Saturday Club</span></p>
+    <h2 id="s-map">A map that <em>refuses</em> to pin</h2>
+    <p>The club's own rule is that nobody sees the exact location until the host offers them a seat. A map with pins would break that promise, so this one shows Karachi as hexagons by neighbourhood and shades only how many events each area has held.</p>
+  </div>
+  <div class="mapgrid">
+    <div class="mapbox"><svg id="map" viewBox="0 0 520 405" role="img" aria-labelledby="mapTitle"><title id="mapTitle">Schematic hex map of Karachi neighbourhoods, shaded by number of Saturday Club events</title></svg></div>
+    <div class="mapnote">
+      <div class="scale" id="scale"></div>
+      <div class="pending" id="pending">Shaded areas have hosted at least one event. Exact counts per area are coming from the club's database.</div>
+      <p><b>What it shows.</b> Every event so far sits in one band of central and south Karachi: Clifton, DHA Phases 5 to 7, PECHS, Sindhi Muslim, Tipu Sultan, Bahadurabad and Maskan. The north, the west and the industrial east are empty.</p>
+      <p><b>What the hexes hide.</b> Equal tiles make Orangi and Clifton look the same size. They are not, in land, people, or money. The tiling is a choice that trades geography for legibility, which is Drucker's point: every chart is capta, something taken and shaped, not something given.</p>
+      <p><b>What the shading cannot say.</b> An empty hex might mean nobody applied from there, or that nobody there felt the club was for them. The map shows where the club went, not where it was wanted.</p>
+      <p class="label">Schematic · not to scale · north up</p>
+    </div>
+  </div>
+</section><section aria-labelledby="s-fix">
+  <hr class="rule2">
+  <div class="col" style="display:grid;gap:12px">
+    <p class="spread lab"><span>No. 05</span><span>A LIGHTER FORM.</span><span>Saturday Club</span></p>
+    <h2 id="s-fix">Same safety, <em>less</em> data</h2>
+    <p>The host's goal is real: a room where everyone has been checked. The question is whether every field earns its place. These are proposed changes to discuss with her.</p>
+  </div>
+  <div class="swap">
+    <div class="now"><span class="script">Now</span>
+      <ul>
+        <li>The CNIC is the only ID accepted. The age check was removed in October, but since CNICs are issued at 18 the card still sets one. Anyone without a card, or with a blocked one, cannot apply.</li>
+        <li>Students must upload a student ID. Working people only type a job title. Proof falls on the youngest applicants.</li>
+        <li>An applicant nobody ever decides on keeps her ID photos, selfie and CNIC in storage with no expiry, though the footer promises deletion.</li>
+        <li>Rejections may come with no reason, and the host's private notes are invisible to the person they describe.</li>
+      </ul>
+    </div>
+    <div class="next"><span class="script">Proposed</span>
+      <ul>
+        <li>Keep the CNIC hash for one-person-one-account, and accept a passport as an alternative.</li>
+        <li>One proof rule for everyone, or a "vouched by a member" route instead of an ID.</li>
+        <li>Auto-close undecided applications 30 days after the event passes, and purge their files with the rest.</li>
+        <li>A short reason with every rejection, and a plain data notice on the form: what is kept, for how long, who sees it.</li>
+      </ul>
+    </div>
+  </div>
+</section><section aria-labelledby="s-method">
+  <hr class="rule2">
+  <div class="col" style="display:grid;gap:14px">
+    <p class="spread lab"><span>No. 06</span><span>METHOD.</span><span>Saturday Club</span></p>
+    <h2 id="s-method">How this was <em>made</em></h2>
+    <p>I built Saturday Club (live at socialisewithmarzya.com) with Claude Code on Next.js and Supabase, hosted on Vercel. For this piece I had Claude Code audit the live code (main branch, 31 October 2026): every table and column, the row-level security rules and column grants that decide who reads what, and the scheduled jobs that delete files. That audit became the field cards, the matrix and the timeline. It also caught the plan drifting from the build: the age limit, WhatsApp automation and social-account verification were all dropped along the way. Nothing here comes from real guests. Sample values are invented, and the map holds only areas. The page itself was vibecoded and deployed the same way I taught in Session 5.</p>
+    <p>Context on the CNIC comes from Pakistani reporting. Since August 2014, no SIM card can be sold or activated without a biometric check against the CNIC. In March 2026 a Senate committee approved a bill giving NADRA explicit power to block cards, which would also cut off SIMs, banking and travel. A club that gates entry on the CNIC inherits that whole system of sorting.</p>
+  </div>
+  <div class="col" style="display:grid;gap:10px">
+    <span class="label">Sources</span>
+    <ul class="refs">
+      <li>D'Ignazio, Catherine, and Lauren F. Klein. <i>Data Feminism</i>. Cambridge: MIT Press, 2020. https://data-feminism.mitpress.mit.edu/.</li>
+      <li>Krause, Heather. "Data Biographies: Getting to Know Your Data." Global Investigative Journalism Network, March 27, 2017. https://gijn.org/stories/data-biographies-getting-to-know-your-data/.</li>
+      <li>Drucker, Johanna. "Humanities Approaches to Graphical Display." <i>Digital Humanities Quarterly</i> 5, no. 1 (2011). http://www.digitalhumanities.org/dhq/vol/5/1/000091/000091.html.</li>
+      <li>Spolsky, Joel. "The Law of Leaky Abstractions." <i>Joel on Software</i>, November 11, 2002.</li>
+      <li>"Nadra set to get powers to block CNICs as Senate panel okays bill." <i>Dawn</i>, March 27, 2026. https://www.dawn.com/news/1985733.</li>
+      <li>"No SIM will be sold without biometric verification from August 1st." <i>ProPakistani</i>, 2014. https://propakistani.pk/?p=52829.</li>
+    </ul>
+  </div>
+</section>
+<div class="closing">
+  <div class="vine"><svg id="vine" viewBox="0 0 260 340" aria-hidden="true"></svg>
+    <div class="in"><span class="script">Thank you</span><span class="label">Shared with the host's permission</span><span class="label" style="color:var(--muted)">Sample data only</span></div>
+  </div>
+</div>
+</div>
+<script>
+const FIELDS=[
+ {n:"Full name as on CNIC",k:"raw",s:"Sana Qureshi",why:"Ties the person to her ID card.",who:"Applicant, host",keep:"Until the account is deleted",q:"Only the state's spelling counts. A chosen name or a name you go by does not."},
+ {n:"CNIC number",k:"prot",s:"42101-•••••••-•  (last 4 shown)",why:"One person, one account. A keyed hash catches repeat or blocked applicants.",who:"Host sees the full number on screen. The hash is server-only",keep:"Readable copy purged 30 days after a decision. Hash kept for good",q:"The club borrows NADRA's definition of a person. No card, no application."},
+ {n:"CNIC photos, front and back",k:"temp",s:"[2 images, GPS data stripped]",why:"Lets the host check the card is real and the face matches.",who:"Host only, by 60-second links. The applicant cannot view her own upload",keep:"30 days after a decision. No expiry if nobody decides",q:"The host becomes a small verification office, doing NADRA's job by eye."},
+ {n:"Date of birth",k:"raw",s:"2003-04-11",why:"Shows the host an age. The minimum-age rule was removed in October 2026.",who:"Applicant, host",keep:"Until the account is deleted",q:"The code no longer sets an age limit, but the CNIC still does: cards are issued at 18."},
+ {n:"WhatsApp number",k:"raw",s:"+92 3•• •••••••",why:"The host messages approvals from her own phone.",who:"Applicant, host",keep:"Until the account is deleted",q:"Assumes a Pakistani number, which since 2014 is itself tied to a CNIC by fingerprint."},
+ {n:"Email",k:"raw",s:"sana.q@example.com",why:"Login by a 6-digit code. All automatic messages go by email.",who:"Applicant, host",keep:"Until the account is deleted",q:"The club runs on email even though its guests live on WhatsApp."},
+ {n:"Occupation",k:"raw",s:"Student · IBA · 3rd year",why:"Who you are in the city: student, working, or other.",who:"Applicant, host",keep:"Until the account is deleted",q:"Students must upload a student ID. Working people just type a job title. \"Other\" means writing 10 to 300 letters about yourself."},
+ {n:"Instagram / LinkedIn",k:"raw",s:"@sana.q (optional)",why:"An extra signal for the host. Typed in, never verified: the verified flags are always false.",who:"Applicant, host",keep:"Until the account is deleted",q:"Optional on paper. A public profile may still read as more trustworthy than none."},
+ {n:"Live selfie",k:"temp",s:"[image, camera only]",why:"Matched by eye to the ID at review, and to the face at the door.",who:"Host only, at review and at the door",keep:"12 months after the last visit",q:"The last check happens on the body. Being on the list is not enough; you must look like your card."},
+ {n:"Host decision and note",k:"raw",s:"Rejected · note: none",why:"Every booking needs her yes, even for verified members. A reason is optional, up to 300 letters.",who:"Host writes it; applicant sees \"Not this time.\" and any note",keep:"Kept",q:"The most important field has no fixed criteria. Trust lives in one person's judgment."},
+ {n:"Host's private notes",k:"raw",s:"[free text]",why:"The host's own memory of each person.",who:"Host only",keep:"Until the account is deleted",q:"A file on you that you never see and do not know exists."},
+ {n:"Payment proof",k:"temp",s:"[image] Easypaisa · TX ID",why:"Proof of a manual transfer. Easypaisa is the only option guests see.",who:"Applicant, host",keep:"12 months after upload, even after account deletion",q:"Assumes a mobile wallet. Cash is not an option."},
+ {n:"No-shows and strikes",k:"raw",s:"0 in the last 12 months",why:"2 brings a warning, 3 pauses bookings for 30 days, 4 prompts the host to block.",who:"Host; the guest sees her own booking statuses",keep:"Counted over 12 months",q:"The record keeps growing after the event and follows a guest into every future application."},
+ {n:"Feedback",k:"raw",s:"4 stars · 46 words",why:"One rating link the day after, valid 7 days, checked-in guests only.",who:"Host only, not even the guest who wrote it",keep:"Kept, even after account deletion",q:"Your words about the night become the club's, and you cannot read them back."}
+];
+const KEEP={raw:"Readable",prot:"Protected",temp:"Temporary"};
+const rec=document.getElementById("record");
+FIELDS.forEach((f,i)=>{
+  const d=document.createElement("details");d.className="field";
+  d.innerHTML=`<summary><div class="top"><h3>${f.n}</h3><span class="keep ${f.k}">${KEEP[f.k]}</span></div><div class="sample">${f.s}</div><span class="more">Open field +</span></summary>
+  <div class="body"><dl><dt>Why</dt><dd>${f.why}</dd><dt>Who sees</dt><dd>${f.who}</dd><dt>Lifespan</dt><dd>${f.keep}</dd></dl><p class="q">${f.q}</p></div>`;
+  rec.appendChild(d);
+});
+
+const COLS=["Applicant (own)","Host","Other guests","Public"];
+const ROWS=[
+ ["Name as on CNIC","y","y","n","n"],
+ ["CNIC number","p","y","n","n"],
+ ["CNIC and ID photos","n","y","n","n"],
+ ["Date of birth","y","y","n","n"],
+ ["WhatsApp and email","y","y","n","n"],
+ ["Occupation","y","y","n","n"],
+ ["Live selfie","n","y","n","n"],
+ ["Decision and note","p","y","n","n"],
+ ["Host's private notes","n","y","n","n"],
+ ["Payment proof","y","y","n","n"],
+ ["Strikes","p","y","n","n"],
+ ["Feedback","n","y","n","n"],
+ ["Exact address","p","y","n","n"],
+ ["Event listing","y","y","y","y"]
+];
+const sym={y:'<span class="y" aria-label="full">●</span>',p:'<span class="p" aria-label="partial">◐</span>',n:'<span class="n" aria-label="none"></span>'};
+document.getElementById("matrix").innerHTML=`<thead><tr><th>Field</th>${COLS.map(c=>`<th scope="col">${c}</th>`).join("")}</tr></thead><tbody>${ROWS.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td>${sym[v]}</td>`).join("")}</tr>`).join("")}</tbody>`;
+
+/* Map data: events = number of Saturday Club events held in that area. null = not yet entered. */
+/* events: a number once counts come from the database; "held" = host confirmed events there; 0 = none. */
+const AREAS=[
+ {n:"Surjani",c:2,r:0,events:0},{n:"N. Karachi",c:3,r:0,events:0},
+ {n:"Orangi",c:1,r:1,events:0},{n:"N. Nazimabad",c:2,r:1,events:0},{n:"Gulberg",c:3,r:1,events:0},{n:"Jauhar",c:4,r:1,events:0},
+ {n:"SITE",c:0,r:2,events:0},{n:"Nazimabad",c:1,r:2,events:0},{n:"Bahadurabad",c:2,r:2,events:"held"},{n:"Gulshan",c:3,r:2,events:0},{n:"Maskan",c:4,r:2,events:"held"},{n:"Malir",c:5,r:2,events:0},
+ {n:"Lyari",c:0,r:3,events:0},{n:"Saddar",c:1,r:3,events:0},{n:"Sindhi Muslim",c:2,r:3,events:"held"},{n:"PECHS",c:3,r:3,events:"held"},{n:"Tipu Sultan",c:4,r:3,events:"held"},{n:"Landhi",c:5,r:3,events:0},
+ {n:"Keamari",c:0,r:4,events:0},{n:"Clifton",c:1,r:4,events:"held"},{n:"DHA Ph 5",c:2,r:4,events:"held"},{n:"DHA Ph 6",c:3,r:4,events:"held"},{n:"DHA Ph 7",c:4,r:4,events:"held"},{n:"Korangi",c:5,r:4,events:0}
+];
+const R=40,W=Math.sqrt(3)*R,svg=document.getElementById("map"),NS="http://www.w3.org/2000/svg";
+const nums=AREAS.map(a=>typeof a.events==="number"?a.events:0),max=Math.max(0,...nums);
+function fill(v){if(v==="held")return"var(--hex-3)";if(!v)return"var(--hex-empty)";const t=v/max;return t<.34?"var(--hex-1)":t<.67?"var(--hex-2)":"var(--hex-3)"}
+function txtCol(v){return v==="held"||(v&&max&&v/max>=.67)?"var(--card)":"var(--ink)"}
+const sea=document.createElementNS(NS,"path");
+sea.setAttribute("d","M0 352 Q130 326 260 344 T520 338 L520 430 L0 430Z");sea.setAttribute("fill","var(--olive-soft)");svg.appendChild(sea);
+const seaT=document.createElementNS(NS,"text");seaT.setAttribute("x","470");seaT.setAttribute("y","392");seaT.setAttribute("text-anchor","end");
+seaT.setAttribute("style","font:italic 15px var(--serif);fill:var(--muted)");seaT.textContent="Arabian Sea";svg.appendChild(seaT);
+AREAS.forEach(a=>{
+  const cx=48+a.c*W+(a.r%2?W/2:0),cy=48+a.r*R*1.5;
+  const pts=[...Array(6)].map((_,i)=>{const ang=Math.PI/180*(60*i-30);return`${(cx+(R-2)*Math.cos(ang)).toFixed(1)},${(cy+(R-2)*Math.sin(ang)).toFixed(1)}`}).join(" ");
+  const g=document.createElementNS(NS,"g");
+  const p=document.createElementNS(NS,"polygon");p.setAttribute("points",pts);p.setAttribute("fill",fill(a.events));
+  p.setAttribute("stroke","var(--rule)");p.setAttribute("stroke-width","1.2");
+  const hasNum=typeof a.events==="number"&&a.events>0;
+  const words=a.n.length>9&&a.n.includes(" ")?[a.n.slice(0,a.n.lastIndexOf(" ")),a.n.slice(a.n.lastIndexOf(" ")+1)]:[a.n];
+  const t=document.createElementNS(NS,"text");t.setAttribute("text-anchor","middle");
+  t.setAttribute("style",`font:700 10px var(--mono);fill:${txtCol(a.events)}`);
+  const y0=cy+(hasNum?-4:4)-(words.length-1)*6;
+  words.forEach((w,i)=>{const s=document.createElementNS(NS,"tspan");s.setAttribute("x",cx);s.setAttribute("y",y0+i*12);s.textContent=w;t.appendChild(s)});
+  g.appendChild(p);g.appendChild(t);
+  if(hasNum){const n=document.createElementNS(NS,"text");n.setAttribute("x",cx);n.setAttribute("y",cy+(words.length>1?22:13));n.setAttribute("text-anchor","middle");
+    n.setAttribute("style",`font:400 15px var(--serif);fill:${txtCol(a.events)}`);n.textContent=a.events;g.appendChild(n)}
+  const tt=document.createElementNS(NS,"title");tt.textContent=`${a.n}: ${a.events==="held"?"has hosted events":hasNum?a.events+" events":"no events"}`;g.appendChild(tt);
+  svg.appendChild(g);
+});
+const anyHeld=AREAS.some(a=>a.events==="held");
+document.getElementById("scale").innerHTML=anyHeld
+ ?`<i style="background:var(--hex-empty)"></i> no events<i style="background:var(--hex-3);margin-left:8px"></i> has hosted events`
+ :`<i style="background:var(--hex-empty)"></i> none<i style="background:var(--hex-1);margin-left:8px"></i><i style="background:var(--hex-2)"></i><i style="background:var(--hex-3)"></i> most events`;
+if(!anyHeld)document.getElementById("pending").hidden=true;
+
+/* Lace medallion */
+(function(){
+const s=document.getElementById("medal"),NS="http://www.w3.org/2000/svg";
+const W=400,H=300,R="#9B1D1B",D="#6F1413",C="#F1E6DA";
+let h=`<defs>
+<pattern id="mesh" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="${R}"/><circle cx="3.5" cy="3.5" r="1.25" fill="${C}" opacity=".55"/></pattern>
+<pattern id="lat" width="14" height="14" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="${C}" opacity=".5"/><path d="M0 7H14M7 0V14M0 0L14 14M14 0L0 14" stroke="${R}" stroke-width="2.2"/><circle cx="7" cy="7" r="2.6" fill="${R}"/></pattern>
+</defs>`;
+const m=16;
+h+=`<rect x="${m}" y="${m}" width="${W-2*m}" height="${H-2*m}" fill="url(#mesh)"/>`;
+[[m,m],[W-m-62,m],[m,H-m-62],[W-m-62,H-m-62]].forEach(([x,y])=>{h+=`<rect x="${x}" y="${y}" width="62" height="62" fill="url(#lat)" stroke="${D}" stroke-width="2"/>`});
+// scallops
+const pts=[];const nx=22,ny=16,sx=(W-2*m)/nx,sy=(H-2*m)/ny;
+for(let i=0;i<=nx;i++){pts.push([m+i*sx,m]);pts.push([m+i*sx,H-m])}
+for(let j=1;j<ny;j++){pts.push([m,m+j*sy]);pts.push([W-m,m+j*sy])}
+pts.forEach(([x,y])=>{h+=`<circle cx="${x}" cy="${y}" r="9.5" fill="${R}" stroke="${D}" stroke-width="1.3"/><circle cx="${x}" cy="${y}" r="2" fill="${C}" opacity=".6"/>`});
+h+=`<rect x="${m+4}" y="${m+4}" width="${W-2*m-8}" height="${H-2*m-8}" fill="none" stroke="${D}" stroke-width="1.5"/>`;
+// scrolls around oval
+const cx=W/2,cy=H/2;
+for(let i=0;i<12;i++){const a=i/12*Math.PI*2,x=cx+Math.cos(a)*150,y=cy+Math.sin(a)*108;
+  h+=`<path d="M${x-14} ${y} q7 -16 14 0 t14 0" fill="none" stroke="${D}" stroke-width="3" stroke-linecap="round" transform="rotate(${a*180/Math.PI+90} ${x} ${y})"/>`}
+h+=`<ellipse cx="${cx}" cy="${cy}" rx="140" ry="96" fill="${R}" stroke="${D}" stroke-width="5"/>`;
+h+=`<ellipse cx="${cx}" cy="${cy}" rx="134" ry="90" fill="none" stroke="#C4554A" stroke-width="1.2" stroke-dasharray="2 3"/>`;
+h+=`<text x="${cx}" y="${cy+8}" text-anchor="middle" style="font:400 52px 'Pinyon Script',cursive" fill="${C}">Who gets in?</text>`;
+h+=`<text x="${cx}" y="${cy+40}" text-anchor="middle" style="font:700 8.5px 'Libre Caslon Text',serif;letter-spacing:.16em" fill="${C}">THE SIGN-UP FORM</text>`;
+h+=`<text x="${cx}" y="${cy+54}" text-anchor="middle" style="font:700 8.5px 'Libre Caslon Text',serif;letter-spacing:.16em" fill="${C}">READ AS A SOURCE</text>`;
+s.innerHTML=h;
+})();
+/* Hand-drawn vine oval */
+(function(){
+const s=document.getElementById("vine"),C="#6F1413";
+let seed=7;const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280};
+function loop(off){let d="";for(let i=0;i<=64;i++){const a=i/64*Math.PI*2,w=1+(rnd()-.5)*.035;
+  const x=130+Math.cos(a)*92*w+off,y=170+Math.sin(a)*140*w;d+=(i?"L":"M")+x.toFixed(1)+" "+y.toFixed(1)}return d}
+let h=`<path d="${loop(0)}" fill="none" stroke="${C}" stroke-width="3" stroke-linejoin="round"/><path d="${loop(3)}" fill="none" stroke="${C}" stroke-width="1.4" opacity=".8"/>`;
+const curls=[[40,90,-1],[222,70,1],[30,250,-1],[232,232,1],[150,318,1],[70,28,-1]];
+curls.forEach(([x,y,f])=>{h+=`<path d="M${x} ${y} c${12*f} -18 ${30*f} -8 ${22*f} 6 s${-18*f} 8 ${-10*f} -4" fill="none" stroke="${C}" stroke-width="2.4" stroke-linecap="round"/>`});
+[[52,40],[218,262],[236,120]].forEach(([x,y])=>{for(let k=0;k<4;k++){const a=k*Math.PI/2+.4;h+=`<ellipse cx="${(x+Math.cos(a)*6).toFixed(1)}" cy="${(y+Math.sin(a)*6).toFixed(1)}" rx="5" ry="3.2" transform="rotate(${(a*57.3).toFixed(0)} ${(x+Math.cos(a)*6).toFixed(1)} ${(y+Math.sin(a)*6).toFixed(1)})" fill="none" stroke="${C}" stroke-width="2"/>`}});
+s.innerHTML=h;
+})();
+</script>
+
+</body></html>
